@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://28yy5skyrl7b"]
+
+[ext_resource type="Script" uid="uid://1h872qylpw8i" path="res://powerup.gd" id="1_13pq6"]
+[ext_resource type="Texture2D" uid="uid://fmubd1dnmrd2" path="res://assets/pow/pow-frame-1.png" id="1_puqwx"]
+[ext_resource type="Texture2D" uid="uid://bx5y1jgaya3x7" path="res://assets/pow/pow-frame-2.png" id="2_13pq6"]
+[ext_resource type="Texture2D" uid="uid://1rqotiw0ixlm" path="res://assets/pow/pow-frame-3.png" id="3_yttoi"]
+[ext_resource type="Texture2D" uid="uid://cq0gk23apdkpg" path="res://assets/pow/pow-frame-4.png" id="4_g8qv3"]
+[ext_resource type="Texture2D" uid="uid://jjrnry58g77e" path="res://assets/pow/pow-frame-5.png" id="5_lhhtn"]
+[ext_resource type="Texture2D" uid="uid://cxha6t3yxle6m" path="res://assets/pow/pow-frame-6.png" id="6_k4hqp"]
+[ext_resource type="Texture2D" uid="uid://iyc1qmq6tyxe" path="res://assets/pow/pow-frame-7.png" id="7_wp04m"]
+[ext_resource type="Texture2D" uid="uid://dgi5ft5p861h7" path="res://assets/pow/pow-frame-8.png" id="8_0fviq"]
+[ext_resource type="Texture2D" uid="uid://ccvjuqxqunupb" path="res://assets/pow/pow-frame-9.png" id="9_okhod"]
+[ext_resource type="Texture2D" uid="uid://c3ir86k37ar1d" path="res://assets/pow/pow-frame-10.png" id="10_i4oat"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qpsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_puqwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_13pq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yttoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g8qv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lhhtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k4hqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wp04m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0fviq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_okhod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_i4oat")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf4yh"]
+radius = 48.283016
+
+[node name="Powerup" type="Area2D" unique_id=1494435539 groups=["powerups"]]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_13pq6")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2018695603]
+sprite_frames = SubResource("SpriteFrames_6qpsl")
+autoplay = "default"
+frame_progress = 0.2274933
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2092589157]
+shape = SubResource("CircleShape2D_uf4yh")
+
+[node name="Lifetime" type="Timer" parent="." unique_id=1139337596]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
